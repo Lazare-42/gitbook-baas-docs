@@ -1,0 +1,1795 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "spoke_handler",
+    "version": "0.2.0"
+  },
+  "paths": {
+    "/bots": {
+      "post": {
+        "tags": [
+          "Bots and Meeting Data"
+        ],
+        "operationId": "bots_handler_join",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JoinResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "# [400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)\nThe request given is wrongly formatted or data asked could not be fulfilled. "
+          },
+          "404": {
+            "description": "# [404 Not Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404)\nThis response is given when you request a page that does not exists."
+          },
+          "422": {
+            "description": "# [422 Unprocessable Entity](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422)\nThis response is given when you request body is not correctly formatted. "
+          },
+          "500": {
+            "description": "# [500 Internal Server Error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500)\nThis response is given when something wend wrong on the server. "
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/bots/{uuid}": {
+      "delete": {
+        "tags": [
+          "Bots and Meeting Data"
+        ],
+        "operationId": "bots_handler_leave",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaveResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "# [400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)\nThe request given is wrongly formatted or data asked could not be fulfilled. "
+          },
+          "404": {
+            "description": "# [404 Not Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404)\nThis response is given when you request a page that does not exists."
+          },
+          "422": {
+            "description": "# [422 Unprocessable Entity](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422)\nThis response is given when you request body is not correctly formatted. "
+          },
+          "500": {
+            "description": "# [500 Internal Server Error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500)\nThis response is given when something wend wrong on the server. "
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/bots/meeting_data": {
+      "get": {
+        "tags": [
+          "Bots and Meeting Data"
+        ],
+        "operationId": "bots_handler_get_meeting_data",
+        "parameters": [
+          {
+            "name": "bot_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "# [400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)\nThe request given is wrongly formatted or data asked could not be fulfilled. "
+          },
+          "404": {
+            "description": "# [404 Not Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404)\nThis response is given when you request a page that does not exists."
+          },
+          "422": {
+            "description": "# [422 Unprocessable Entity](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422)\nThis response is given when you request body is not correctly formatted. "
+          },
+          "500": {
+            "description": "# [500 Internal Server Error](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500)\nThis response is given when something wend wrong on the server. "
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/calendars": {
+      "get": {
+        "tags": [
+          "Calendars"
+        ],
+        "operationId": "calendar_calendars_list_calendars",
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      },
+      "post": {
+        "tags": [
+          "Calendars"
+        ],
+        "description": "synchronize all events of a new calendar",
+        "operationId": "calendar_calendars_create_calendar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCalendarParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/calendars/{uuid}": {
+      "get": {
+        "tags": [
+          "Calendars"
+        ],
+        "operationId": "calendar_calendars_get_calendar",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Calendars"
+        ],
+        "operationId": "calendar_calendars_delete_calendar",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Calendars"
+        ],
+        "operationId": "calendar_calendars_update_calendar",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/calendar_events": {
+      "get": {
+        "tags": [
+          "Calendar Events"
+        ],
+        "description": "list all events of a calendar",
+        "operationId": "calendar_calendar_events_list_events",
+        "parameters": [
+          {
+            "name": "calendar_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/calendar_events/{uuid}": {
+      "get": {
+        "tags": [
+          "Calendar Events"
+        ],
+        "description": "get event with uuid",
+        "operationId": "calendar_calendar_events_get_event",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/calendar_events/{uuid}/bot": {
+      "post": {
+        "tags": [
+          "Calendar Events"
+        ],
+        "operationId": "calendar_calendar_events_schedule_record_event",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Calendar Events"
+        ],
+        "operationId": "calendar_calendar_events_unschedule_record_event",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "JoinResponse": {
+        "type": "object",
+        "required": [
+          "bot_id"
+        ],
+        "properties": {
+          "bot_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "JoinRequest": {
+        "type": "object",
+        "required": [
+          "bot_name",
+          "meeting_url",
+          "reserved"
+        ],
+        "properties": {
+          "meeting_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "bot_name": {
+            "type": "string"
+          },
+          "bot_image": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "speech_to_text": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SpeechToTextProvider"
+              }
+            ],
+            "nullable": true
+          },
+          "reserved": {
+            "type": "boolean"
+          },
+          "entry_message": {
+            "type": "string",
+            "nullable": true
+          },
+          "webhook_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "automatic_leave": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AutomaticLeaveRequest"
+              }
+            ],
+            "nullable": true
+          },
+          "deduplication_key": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "SpeechToTextProvider": {
+        "type": "string",
+        "enum": [
+          "Gladia"
+        ]
+      },
+      "AutomaticLeaveRequest": {
+        "type": "object",
+        "properties": {
+          "waiting_room_timeout": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0.0,
+            "nullable": true
+          },
+          "noone_joined_timeout": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0.0,
+            "nullable": true
+          }
+        }
+      },
+      "LeaveResponse": {
+        "type": "object",
+        "required": [
+          "ok"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Project": {
+        "description": "This struct represents a project in the system. A project contains assets and other related items.",
+        "type": "object",
+        "required": [
+          "assets",
+          "attendees",
+          "categories",
+          "clipitems",
+          "created_at",
+          "creator_id",
+          "editors",
+          "final_zip_status",
+          "hubspot_sync_state",
+          "id",
+          "is_new_project",
+          "is_synced",
+          "is_workspace_member",
+          "labels",
+          "name",
+          "preview_status",
+          "salesforce_sync_state",
+          "share_link",
+          "share_link_attendees",
+          "speaking_time",
+          "summary",
+          "summary_length_written",
+          "template",
+          "updated_at",
+          "view_counter"
+        ],
+        "properties": {
+          "id": {
+            "description": "The unique identifier of the project.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "description": "The name of the project.",
+            "type": "string"
+          },
+          "creator_id": {
+            "description": "The creator's identifier.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "editors": {
+            "description": "A list of editors associated with the project.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompleteEditor"
+            }
+          },
+          "created_at": {
+            "description": "The creation time and date of the project.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SystemTime"
+              }
+            ]
+          },
+          "updated_at": {
+            "description": "The time and date when the project was last updated.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SystemTime"
+              }
+            ]
+          },
+          "is_new_project": {
+            "description": "Flag to indicate whether it is a new project.",
+            "type": "boolean"
+          },
+          "share_link": {
+            "description": "Random string which is in the url to share the project.",
+            "type": "string"
+          },
+          "view_counter": {
+            "description": "Count of views for the project.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "assets": {
+            "description": "A list of assets associated with the project.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Asset"
+            }
+          },
+          "final_zip_path": {
+            "description": "Path to the zip file containing the final renditions (videom mp4, subtitles etc).",
+            "type": "string",
+            "nullable": true
+          },
+          "final_zip_status": {
+            "description": "Status of the final video rendering process.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinalVideoStatus"
+              }
+            ]
+          },
+          "preview_status": {
+            "description": "Status of the preview video rendering process.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PreviewVideoStatus"
+              }
+            ]
+          },
+          "preview_path": {
+            "description": "Path to the preview video ( a gif of the first highlight ).",
+            "type": "string",
+            "nullable": true
+          },
+          "clipitems": {
+            "description": "List of clip items associated with the project.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Clipitem"
+            }
+          },
+          "labels": {
+            "description": "Labels attached to the project.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Label"
+            }
+          },
+          "categories": {
+            "description": "Categories the project falls under.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "delete_marker": {
+            "description": "Indicate if the project has been flagged for removal.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SystemTime"
+              }
+            ],
+            "nullable": true
+          },
+          "workspace_id": {
+            "description": "Identifies the workspace where the project resides.",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "new_spoke": {
+            "description": "Indicate if this project is new for a certain user",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NewSpoke"
+              }
+            ],
+            "nullable": true
+          },
+          "is_workspace_member": {
+            "description": "Indicates if the user fetching the project is a workspace member of the project associated workspace",
+            "type": "boolean"
+          },
+          "template": {
+            "description": "Ai meeting report of the project",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AgendaJson"
+              }
+            ]
+          },
+          "summary": {
+            "description": "Deprecated: Summary of the project.",
+            "type": "string"
+          },
+          "summary_length_written": {
+            "description": "Deprecated",
+            "type": "integer",
+            "format": "int32"
+          },
+          "last_updated_by": {
+            "description": "Identify the last user who updated the project.",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "creator_email": {
+            "description": "Email address of the creator.",
+            "type": "string",
+            "nullable": true
+          },
+          "last_updater_email": {
+            "description": "Email address of the last user who updated the project.",
+            "type": "string",
+            "nullable": true
+          },
+          "is_synced": {
+            "description": "Indicator of whether the project has been synced with an external integration.",
+            "type": "boolean"
+          },
+          "hubspot_sync_state": {
+            "description": "The state of the project's sync with Hubspot.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HubspotSyncState"
+              }
+            ]
+          },
+          "salesforce_sync_state": {
+            "description": "The state of the project's sync with Salesforce.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SalesforceSyncState"
+              }
+            ]
+          },
+          "original_agenda_id": {
+            "description": "Ai template associated with this project",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "meeting_provider": {
+            "description": "The provider of the meeting service used for the original meeting / agenda ( zoom, teams or meet )",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MeetingProvider"
+              }
+            ],
+            "nullable": true
+          },
+          "share_link_attendees": {
+            "description": "Share link specific to attendees of the project / meeting.",
+            "type": "string"
+          },
+          "original_agenda_name": {
+            "description": "If the project is associated with an ai template, this stores its name",
+            "type": "string",
+            "nullable": true
+          },
+          "attendees": {
+            "description": "List of attendees on the meeting",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attendee"
+            }
+          },
+          "client_name": {
+            "description": "client name on the call",
+            "type": "string",
+            "nullable": true
+          },
+          "user_feedback": {
+            "description": "user feedback of the spoke",
+            "type": "string",
+            "nullable": true
+          },
+          "user_star_rating": {
+            "description": "user star rating of the spoke (between 0 and 5)",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "voip_caller_phone_number": {
+            "description": "On VOIP Spokes, the caller phone number",
+            "type": "string",
+            "nullable": true
+          },
+          "voip_callee_phone_number": {
+            "description": "On VOIP Spokes, the callee phone number",
+            "type": "string",
+            "nullable": true
+          },
+          "speaking_time": {
+            "description": "Speaking time.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SpeakingTime"
+              }
+            ]
+          }
+        }
+      },
+      "CompleteEditor": {
+        "description": "a Complete editor with all videos, transcript and clipitem for get route",
+        "type": "object",
+        "required": [
+          "editor",
+          "video"
+        ],
+        "properties": {
+          "editor": {
+            "description": "An editor is just a link to the video",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Editor"
+              }
+            ]
+          },
+          "video": {
+            "description": "A Video associated with the Editor (containing transcript)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Video"
+              }
+            ]
+          }
+        }
+      },
+      "Editor": {
+        "description": "an Editor is just a link to a video",
+        "type": "object",
+        "required": [
+          "final_moment_status",
+          "id",
+          "index",
+          "project_id",
+          "video_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "index": {
+            "description": "deprecated",
+            "type": "integer",
+            "format": "int32"
+          },
+          "project_id": {
+            "description": "Parent project",
+            "type": "integer",
+            "format": "int32"
+          },
+          "video_id": {
+            "description": "Link to this video",
+            "type": "integer",
+            "format": "int32"
+          },
+          "final_moment_path": {
+            "description": "deprecated",
+            "type": "string",
+            "nullable": true
+          },
+          "final_moment_status": {
+            "description": "deprecated",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinalVideoStatus"
+              }
+            ]
+          }
+        }
+      },
+      "FinalVideoStatus": {
+        "type": "string",
+        "enum": [
+          "UpToDate",
+          "NotUpToDate",
+          "Processing"
+        ]
+      },
+      "Video": {
+        "description": "Represents a part of the asset ( from audio_offset with a duration duration ) and contains transcript of this part of the video",
+        "type": "object",
+        "required": [
+          "audio_offset",
+          "id",
+          "transcription_completed",
+          "transcription_validated",
+          "transcripts",
+          "uploader_id"
+        ],
+        "properties": {
+          "id": {
+            "description": "The unique identifier for the video.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "uploader_id": {
+            "description": "The account_id of the uploader of this video.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "transcripts": {
+            "description": "A list of transcripts associated with this video.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transcript"
+            }
+          },
+          "thumbnail_path": {
+            "description": "Path to the thumbnail image for this video, if it exists.",
+            "type": "string",
+            "nullable": true
+          },
+          "soundcard_path": {
+            "description": "Deprecated: Path to the soundcard file associated with this video, if it exists.",
+            "type": "string",
+            "nullable": true
+          },
+          "microphone_path": {
+            "description": "Depreacted: Path to the microphone file associated with this video, if it exists.",
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "description": "The duration of the video in seconds, given as floating point number.",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "audio_offset": {
+            "description": "The offset (in seconds) from start when the asset of this video.",
+            "type": "number",
+            "format": "double"
+          },
+          "transcription_validated": {
+            "description": "Deprecated.",
+            "type": "boolean"
+          },
+          "asset_id": {
+            "description": "The ID of the asset related to this video, if it exists.",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "transcription_completed": {
+            "description": "Boolean flag. If true, indicates that transcription process for this video has been completed.",
+            "type": "boolean"
+          }
+        }
+      },
+      "Transcript": {
+        "description": "Represents a video transcript.",
+        "type": "object",
+        "required": [
+          "google_lang",
+          "id",
+          "original_words",
+          "speaker",
+          "video_id",
+          "words"
+        ],
+        "properties": {
+          "id": {
+            "description": "The identifier of the transcript",
+            "type": "integer",
+            "format": "int32"
+          },
+          "speaker": {
+            "description": "The speaker's name",
+            "type": "string"
+          },
+          "video_id": {
+            "description": "The associated video's ID",
+            "type": "integer",
+            "format": "int32"
+          },
+          "words": {
+            "description": "A list of words spoken in the video",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Word"
+            }
+          },
+          "original_words": {
+            "description": "A list of original words from the video This represent the words givent by the Speech to text api before than the user potentialy updates it",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OriginalWord"
+            }
+          },
+          "google_lang": {
+            "description": "The language used in the video, in the google code format",
+            "type": "string"
+          },
+          "matching": {
+            "description": "The matching keyword or phrase, if any ( used for search )",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Word": {
+        "type": "object",
+        "required": [
+          "id",
+          "transcript_id",
+          "video_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "start_time": {
+            "description": "start time in secs relative to the complete video",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "end_time": {
+            "description": "end time in secs relative to the complete video",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "transcript_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "OriginalWord": {
+        "type": "object",
+        "required": [
+          "end_time",
+          "id",
+          "start_time",
+          "text",
+          "transcript_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "start_time": {
+            "description": "start time in secs relative to the complete video",
+            "type": "number",
+            "format": "double"
+          },
+          "end_time": {
+            "description": "end time in secs relative to the complete video",
+            "type": "number",
+            "format": "double"
+          },
+          "transcript_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "SystemTime": {
+        "type": "object",
+        "required": [
+          "nanos_since_epoch",
+          "secs_since_epoch"
+        ],
+        "properties": {
+          "secs_since_epoch": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0.0
+          },
+          "nanos_since_epoch": {
+            "type": "integer",
+            "format": "uint32",
+            "minimum": 0.0
+          }
+        }
+      },
+      "Asset": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "created_at",
+          "from_app",
+          "height",
+          "human_transcription_pending",
+          "id",
+          "is_meeting_bot",
+          "locked",
+          "moment_pending",
+          "name",
+          "s3_path",
+          "uploading",
+          "width"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/SystemTime"
+          },
+          "from_app": {
+            "type": "boolean"
+          },
+          "zip_path": {
+            "type": "string",
+            "nullable": true
+          },
+          "s3_path": {
+            "type": "string"
+          },
+          "mp4_s3_path": {
+            "type": "string",
+            "nullable": true
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uploading": {
+            "type": "boolean"
+          },
+          "moment_pending": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "human_transcription_pending": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "upload_error": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_meeting_bot": {
+            "type": "boolean"
+          },
+          "duration": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "video_size": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "delete_marker": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SystemTime"
+              }
+            ],
+            "nullable": true
+          },
+          "locked": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PreviewVideoStatus": {
+        "type": "string",
+        "enum": [
+          "UpToDate",
+          "NotUpToDate",
+          "Processing",
+          "NotGenerated"
+        ]
+      },
+      "Clipitem": {
+        "description": "Clipitem struct represents a segment of a video that has been edited or clipped.",
+        "type": "object",
+        "required": [
+          "asset_id",
+          "editor_id",
+          "id",
+          "in_time",
+          "label_share_link",
+          "labels",
+          "out_time",
+          "project_id",
+          "share_link"
+        ],
+        "properties": {
+          "id": {
+            "description": "The identifier of the Clipitem",
+            "type": "integer",
+            "format": "int32"
+          },
+          "editor_id": {
+            "description": "Deprecated: The id relating to the editor of this clip",
+            "type": "integer",
+            "format": "int32"
+          },
+          "in_time": {
+            "description": "The start time of this clip in relation to the Asset",
+            "type": "number",
+            "format": "double"
+          },
+          "out_time": {
+            "description": "The end time of this clip in relation to the asset",
+            "type": "number",
+            "format": "double"
+          },
+          "project_id": {
+            "description": "The project id the clipitem belongs to",
+            "type": "integer",
+            "format": "int32"
+          },
+          "asset_id": {
+            "description": "The id of the asset the clipitem belongs to",
+            "type": "integer",
+            "format": "int32"
+          },
+          "labels": {
+            "description": "Labels associated with the clipitem (only one)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Label"
+            }
+          },
+          "notes": {
+            "description": "Optional notes (typed by the user) attached for the clipitem",
+            "nullable": true
+          },
+          "summary": {
+            "description": "Optional summary (ai genreated) provided for the clipitem",
+            "type": "string",
+            "nullable": true
+          },
+          "share_link": {
+            "type": "string"
+          },
+          "label_share_link": {
+            "type": "string"
+          }
+        }
+      },
+      "Label": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "color",
+          "id",
+          "multiple",
+          "name",
+          "typed"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "color": {
+            "type": "string"
+          },
+          "typed": {},
+          "multiple": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "color",
+          "id",
+          "name",
+          "private"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "color": {
+            "type": "string"
+          },
+          "workspace_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "private": {
+            "type": "boolean"
+          }
+        }
+      },
+      "NewSpoke": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "id",
+          "project_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "project_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "AgendaJson": {
+        "description": "Represents the JSON structure of an agenda.",
+        "type": "object",
+        "required": [
+          "blocks"
+        ],
+        "properties": {
+          "blocks": {
+            "description": "The blocks of the agenda.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgendaBlock"
+            }
+          }
+        }
+      },
+      "AgendaBlock": {
+        "description": "Represents a block in an agenda.",
+        "oneOf": [
+          {
+            "description": "DEPRECATED Represents a header block.",
+            "type": "object",
+            "required": [
+              "data",
+              "id",
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "header"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "data": {
+                "$ref": "#/components/schemas/ParagraphData"
+              }
+            }
+          },
+          {
+            "description": "Represents a talking point block. (question, answer is clipitem)",
+            "type": "object",
+            "required": [
+              "data",
+              "id",
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "talkingpoint"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "data": {
+                "$ref": "#/components/schemas/TalkingPointData"
+              }
+            }
+          },
+          {
+            "description": "Represents a paragraph block. (Comments)",
+            "type": "object",
+            "required": [
+              "data",
+              "id",
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "paragraph"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "data": {
+                "$ref": "#/components/schemas/ParagraphData"
+              }
+            }
+          },
+          {
+            "description": "DEPRECATED Represents a topic block.",
+            "type": "object",
+            "required": [
+              "data",
+              "id",
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "topic"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "data": {
+                "$ref": "#/components/schemas/TopicData"
+              }
+            }
+          }
+        ]
+      },
+      "ParagraphData": {
+        "description": "Represents the data of a paragraph block.",
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "description": "The text of the paragraph.",
+            "type": "string"
+          }
+        }
+      },
+      "TalkingPointData": {
+        "description": "Represents the data of a talking point block.",
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "description": "The ID of the talking point.",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "description": "The name of the talking point.",
+            "type": "string"
+          },
+          "label": {
+            "description": "The label of the talking point.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PartialLabel"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "PartialLabel": {
+        "type": "object",
+        "required": [
+          "color",
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          }
+        }
+      },
+      "TopicData": {
+        "description": "Represents the data of a topic block.",
+        "type": "object",
+        "required": [
+          "duration",
+          "talking_points",
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "description": "The title of the topic.",
+            "type": "string"
+          },
+          "talking_points": {
+            "description": "The talking points of the topic.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TalkingPointData"
+            }
+          },
+          "duration": {
+            "description": "The duration of the topic.",
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "HubspotSyncState": {
+        "type": "string",
+        "enum": [
+          "NotHubspotWorkspace",
+          "NotConnected",
+          "NotSynced",
+          "Synced"
+        ]
+      },
+      "SalesforceSyncState": {
+        "type": "string",
+        "enum": [
+          "NotSalesforceWorkspace",
+          "NotConnected",
+          "NotSynced",
+          "Synced"
+        ]
+      },
+      "MeetingProvider": {
+        "type": "string",
+        "enum": [
+          "Aircall",
+          "Ringover",
+          "Meet",
+          "Zoom",
+          "Teams"
+        ]
+      },
+      "Attendee": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "SpeakingTime": {
+        "type": "object",
+        "required": [
+          "attendees",
+          "total"
+        ],
+        "properties": {
+          "attendees": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "total": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "CreateCalendarParams": {
+        "type": "object",
+        "required": [
+          "oauth_refresh_token",
+          "platform"
+        ],
+        "properties": {
+          "oauth_client_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "oauth_client_secret": {
+            "type": "string",
+            "nullable": true
+          },
+          "oauth_refresh_token": {
+            "type": "string"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Provider"
+          },
+          "calendar_ids_to_sync": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "Provider": {
+        "description": "Fields with value `\"simple\"` parse as `Kind::Simple`. Fields with value `\"fancy\"` parse as `Kind::SoFancy`.",
+        "type": "string",
+        "enum": [
+          "Google",
+          "Microsoft"
+        ]
+      },
+      "Event": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "attendees",
+          "calendar_id",
+          "delete_token",
+          "end_time",
+          "google_id",
+          "id",
+          "is_organizer",
+          "is_recurring",
+          "meeting_url",
+          "name",
+          "record",
+          "start_time",
+          "status",
+          "uuid"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "google_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "meeting_url": {
+            "type": "string"
+          },
+          "start_time": {
+            "$ref": "#/components/schemas/SystemTime"
+          },
+          "calendar_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "attendees": {},
+          "record": {
+            "type": "boolean"
+          },
+          "is_organizer": {
+            "type": "boolean"
+          },
+          "end_time": {
+            "$ref": "#/components/schemas/SystemTime"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EventStatus"
+          },
+          "error": {
+            "type": "string",
+            "nullable": true
+          },
+          "session_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "project_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "refuse_recording_by": {
+            "type": "string",
+            "nullable": true
+          },
+          "delete_token": {
+            "type": "string"
+          },
+          "recurring_event_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_recurring": {
+            "type": "boolean"
+          },
+          "agenda_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "EventStatus": {
+        "type": "string",
+        "enum": [
+          "PrepareRecording",
+          "Recording",
+          "Error",
+          "None"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "name": "x-spoke-api-key",
+        "in": ""
+      }
+    }
+  }
+}
